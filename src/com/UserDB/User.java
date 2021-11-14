@@ -9,27 +9,27 @@ public class User implements Serializable {
     private Email email;
     private Role.Level1 lv1;
     private Role.Level2 lv2;
-    private boolean superAdmin;
+    private boolean isSuperAdmin;
     private Telephone telephone;
 
 
     public User(String name, String surname, String email,
-                Role.Level1 lv1, Role.Level2 lv2, boolean superAdmin, String telephone) {
+                Role.Level1 lv1, Role.Level2 lv2, boolean isSuperAdmin, String telephone) {
         this.name = name;
         this.surname = surname;
         this.email = new Email(email);
-        if (superAdmin != true) {
+        if (isSuperAdmin) {
             this.lv1 = lv1;
             this.lv2 = lv2;
         }
-        this.superAdmin = superAdmin;
+        this.isSuperAdmin = isSuperAdmin;
         this.telephone = new Telephone(telephone);
     }
 
     public User(){
         lv1 = Role.Level1.NONE;
         lv2 = Role.Level2.NONE;
-        superAdmin = false;
+        isSuperAdmin = false;
     }
 
     public String getName() {
@@ -53,7 +53,7 @@ public class User implements Serializable {
     }
 
     public boolean isSuperAdmin() {
-        return superAdmin;
+        return isSuperAdmin;
     }
 
 
@@ -81,12 +81,12 @@ public class User implements Serializable {
         this.lv2 = lv2;
     }
 
-    public void setSuperAdmin(boolean superAdmin) {
-        if (superAdmin == true) {
+    public void setSuperAdmin(boolean isSuperAdmin) {
+        if (isSuperAdmin) {
             lv1 = Role.Level1.NONE;
             lv2 = Role.Level2.NONE;
         }
-        this.superAdmin = superAdmin;
+        this.isSuperAdmin = isSuperAdmin;
     }
 
     public void setTelephone(String telephone) {
@@ -99,7 +99,7 @@ public class User implements Serializable {
                 " | E-mail: " + email + " | Roles: " +
                 ((lv1 != Role.Level1.NONE) ? "Level 1: " + lv1 + " " : "") +
                 ((lv2 != Role.Level2.NONE) ? "Level 2: " + lv2 + " " : "") +
-                ((superAdmin) ? "SUPER_ADMIN" : "") +
+                ((isSuperAdmin) ? "SUPER_ADMIN" : "") +
                 " | Telephone number: " + telephone;
     }
 }

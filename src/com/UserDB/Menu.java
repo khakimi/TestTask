@@ -125,7 +125,9 @@ public class Menu {
 
 
 
-
+    private void displayChanges(User tempUser){
+        System.out.println("\tHere is what you changed - " + tempUser + '\n');
+    }
 
     public void editUser(int n) {
         User tempUser = userList.get(n);
@@ -144,18 +146,22 @@ public class Menu {
                 case "1":
                     System.out.println("\tEnter user's new name: ");
                     nameInput(tempUser);
+                    displayChanges(tempUser);
                     break;
                 case "2":
                     System.out.println("\tEnter user's new surname: ");
                     surnameInput(tempUser);
+                    displayChanges(tempUser);
                     break;
                 case "3":
                     System.out.println("\tEnter user's new e-mail: ");
                     emailInput(tempUser);
+                    displayChanges(tempUser);
                     break;
                 case "4":
                     System.out.println("\tEnter user's new Super_Admin status (t, f): ");
                     superAdminInput(tempUser);
+                    displayChanges(tempUser);
                     break;
                 case "5":
                     if (tempUser.isSuperAdmin())
@@ -163,6 +169,7 @@ public class Menu {
                     else {
                         System.out.println("\tEnter user's new role of level1(USER, CUSTOMER, NONE) : ");
                         roleLevel1Input(tempUser);
+                        displayChanges(tempUser);
                     }
                     break;
                 case "6":
@@ -171,18 +178,19 @@ public class Menu {
                     else {
                         System.out.println("\tEnter user's new role of level2(ADMIN, PROVIDER, NONE) : ");
                         roleLevel2Input(tempUser);
+                        displayChanges(tempUser);
                     }
                     break;
                 case "7":
                     System.out.println("\tEnter user's new telephone number: ");
                     telephoneInput(tempUser);
+                    displayChanges(tempUser);
                     break;
                 case "8":
                     return;
                 default:
                     System.out.println("\tInvalid input! Try again");
             }
-            System.out.println("\tHere is what you changed - " + tempUser + '\n');
         }
 
     }
